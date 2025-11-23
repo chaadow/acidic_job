@@ -20,6 +20,10 @@ module AcidicJob
       def serialize?(argument)
         defined?(::AcidicJob::ActiveKiq) && argument.class < ::AcidicJob::ActiveKiq
       end
+
+      def klass
+        '::AcidicJob::ActiveKiq'
+      end
     end
   end
 end

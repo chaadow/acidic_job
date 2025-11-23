@@ -19,6 +19,10 @@ module AcidicJob
       def serialize?(argument)
         defined?(::AcidicJob::FinishedPoint) && argument.is_a?(::AcidicJob::FinishedPoint)
       end
+
+      def klass
+        '::AcidicJob::FinishedPoint'
+      end
     end
   end
 end

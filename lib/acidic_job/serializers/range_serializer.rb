@@ -17,8 +17,6 @@ module AcidicJob
         klass.new(*Arguments.deserialize(hash.values_at(*KEYS)))
       end
 
-      private
-
       def klass
         ::Range
       end

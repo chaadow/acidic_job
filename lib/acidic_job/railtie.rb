@@ -14,15 +14,25 @@ module AcidicJob
 
     initializer "acidic_job.active_job_serializers" do
       ::ActiveSupport.on_load(:active_job) do
+        require "active_job/serializers"
+        require_relative "serializers/exception_serializer"
+        require_relative "serializers/finished_point_serializer"
+        require_relative "serializers/job_serializer"
+        require_relative "serializers/range_serializer"
+        require_relative "serializers/recovery_point_serializer"
+        require_relative "serializers/worker_serializer"
+        require_relative "serializers/active_kiq_serializer"
+        require_relative "serializers/new_record_serializer"
+
         ::ActiveJob::Serializers.add_serializers(
-          Serializers::ExceptionSerializer,
-          Serializers::NewRecordSerializer,
-          Serializers::FinishedPointSerializer,
-          Serializers::JobSerializer,
-          Serializers::RangeSerializer,
-          Serializers::RecoveryPointSerializer,
-          Serializers::WorkerSerializer,
-          Serializers::ActiveKiqSerializer
+          Serializers::ExceptionSerializer.instance,
+          Serializers::NewRecordSerializer.instance,
+          Serializers::FinishedPointSerializer.instance,
+          Serializers::JobSerializer.instance,
+          Serializers::RangeSerializer.instance,
+          Serializers::RecoveryPointSerializer.instance,
+          Serializers::WorkerSerializer.instance,
+          Serializers::ActiveKiqSerializer.instance
         )
       end
     end

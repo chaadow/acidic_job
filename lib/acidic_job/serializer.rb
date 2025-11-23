@@ -14,7 +14,7 @@ module AcidicJob
       end
 
       def dump(obj)
-        data = Arguments.send :serialize, obj
+        data = Arguments.send :serialize_argument, obj
         data.to_json
       rescue ActiveJob::SerializationError
         raise UnserializableValue

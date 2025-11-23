@@ -20,6 +20,10 @@ module AcidicJob
         defined?(::Sidekiq) && argument.class.include?(::Sidekiq::Worker) &&
           !(defined?(::AcidicJob::ActiveKiq) && argument.class < ::AcidicJob::ActiveKiq)
       end
+
+      def klass
+        '::AcidicJob::ActiveKiq'
+      end
     end
   end
 end

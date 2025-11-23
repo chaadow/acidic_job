@@ -20,6 +20,10 @@ module AcidicJob
       def serialize?(argument)
         defined?(::AcidicJob::RecoveryPoint) && argument.is_a?(::AcidicJob::RecoveryPoint)
       end
+
+      def klass
+        '::AcidicJob::RecoveryPoint'
+      end
     end
   end
 end
